@@ -8,9 +8,14 @@ namespace Tests.Algorithms.Sort
 {
     public class SelectionSortTests
     {
-        private readonly int[] _unsortedArray =
+        private readonly int[] _unsortedArrayWithUniqueItems =
         {
             27, 17, 25, 4, 1, 3, 2, 6, 11, 12, 9, 7, 15, 5, 13, 17, 20, 16, 18, 14, 22, 23, 21
+        };
+
+        private readonly int[] _unsortedArrayWithDuplicateItems =
+        {
+            2, 27, 17, 25, 2, 4, 1, 3, 27, 2, 6, 11, 21, 12, 9, 7, 15, 5, 13, 1, 17, 20, 7, 16, 1, 18, 1, 1, 14, 22, 23, 21
         };
 
         [Fact(DisplayName = "SST-001: SelectionSort throws an ArgumentNullException when the array is null.")]
@@ -26,32 +31,34 @@ namespace Tests.Algorithms.Sort
                 .Throw<ArgumentNullException>();
         }
 
-        [Fact(DisplayName = "SST-002: SelectionSort sorts an unsorted array correctly.")]
+        [Fact(DisplayName = "SST-002: SelectionSort sorts an unsorted array with unique items correctly.")]
         public void SST002()
         {
             // assign
-            var temp = _unsortedArray.ToList();
+            var temp = _unsortedArrayWithUniqueItems.ToList();
             temp.Sort();
             var expectedSortedArray = temp.ToArray();
 
             // act
-            var result = SelectionSort.Sort(_unsortedArray);
+            var result = SelectionSort.Sort(_unsortedArrayWithUniqueItems);
 
             // assert
             result.Should().BeEquivalentTo(expectedSortedArray);
         }
 
-        //[Fact(DisplayName = "BST-003: BinarySearch can find the index of an item that exists in the array.")]
-        //public void BST003()
-        //{
-        //    // assign
-        //    int item = 7;
+        [Fact(DisplayName = "SST-003: SelectionSort sorts an unsorted array with duplicate items correctly.")]
+        public void SST003()
+        {
+            // assign
+            var temp = _unsortedArrayWithDuplicateItems.ToList();
+            temp.Sort();
+            var expectedSortedArray = temp.ToArray();
 
-        //    // act
-        //    var result = BinarySearch.Search(_sortedArray, item);
+            // act
+            var result = SelectionSort.Sort(_unsortedArrayWithDuplicateItems);
 
-        //    // assert
-        //    result.Should().Be(6);
-        //}
+            // assert
+            result.Should().BeEquivalentTo(expectedSortedArray);
+        }
     }
 }
