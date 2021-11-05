@@ -1,23 +1,23 @@
 ﻿using System;
 
-namespace Algorithms
+namespace Algorithms.Search
 {
     public class BinarySearch
     {
-        public static int? Search(int[] list, int item)
+        public static int? Search(int[] sortedArray, int item)
         {
-            if (list == null)
+            if (sortedArray == null)
             {
-                throw new ArgumentNullException("The list is null");
+                throw new ArgumentNullException($"The {nameof(sortedArray)} is null");
             }
 
             int low = 0;
-            int high = list.Length;
+            int high = sortedArray.Length;
 
             while (low <= high)
             {
                 int mid = (low + high) / 2;
-                int guess = list[mid];
+                int guess = sortedArray[mid];
 
                 if (guess == item)
                 {

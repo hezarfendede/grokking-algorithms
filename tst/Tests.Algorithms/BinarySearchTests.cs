@@ -1,9 +1,9 @@
 using System;
-using Algorithms;
+using Algorithms.Search;
 using FluentAssertions;
 using Xunit;
 
-namespace Tests.Algorithms
+namespace Tests.Algorithms.Search
 {
     public class BinarySearchTests
     {
@@ -25,7 +25,7 @@ namespace Tests.Algorithms
                 .Throw<ArgumentNullException>();
         }
 
-        [Fact(DisplayName = "BST-002: BinarySearch can't found an item that does not exist in the array.")]
+        [Fact(DisplayName = "BST-002: BinarySearch can't find an item that does not exist in the array.")]
         public void BST002()
         {
             // assign
@@ -38,7 +38,7 @@ namespace Tests.Algorithms
             result.Should().BeNull();
         }
 
-        [Fact(DisplayName = "BST-003: BinarySearch can found the index of an item that exists in the array.")]
+        [Fact(DisplayName = "BST-003: BinarySearch can find the index of an item that exists in the array.")]
         public void BST003()
         {
             // assign
