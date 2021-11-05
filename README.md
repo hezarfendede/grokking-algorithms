@@ -1,2 +1,2 @@
 # grokking-algorithms
-just some algo examples in rust
+just some algorithm examples in C#
